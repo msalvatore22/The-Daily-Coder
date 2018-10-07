@@ -34,7 +34,7 @@ class News extends Component {
   render(){
    return (
      <div className="row">
-       <div className="col s6 offset-s3">
+       <div className="col l6 offset-l3 s12">
           <ul>
             {this.renderNews()}
           </ul>
