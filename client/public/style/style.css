@@ -1,0 +1,14 @@
+.article-img {
+  height: 400px;
+  width: 100%;
+}
+
+.article-list-img {
+  height: 100px;
+  width: 200px;
+}
+
+.collapsible-header {
+  justify-content: center;
+}
+
