@@ -1,5 +1,6 @@
 # The Daily Coder
-*The daily coder is a web-application for developers to stay up-to-date on the latest technology trends and news.
+* The daily coder is a web-application for developers to stay up-to-date on the latest technology trends and news.
+* Built with Node.js, Express, React, Redux, and MongoDB.
 
 ## Tools Used:
 * Javascript
