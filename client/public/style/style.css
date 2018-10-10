@@ -12,6 +12,33 @@
   justify-content: center;
 }
 
+.search-bar {
+  margin-top: 20px;
+}
+
+.search-btn {
+  margin-top: 10px;
+  margin-left: 45px;
+}
+
+#icon_prefix {
+  color: #607d8b;
+}
+
+#icon_prefix:focus + label {
+  color: #607d8b;
+}
+
+#icon_prefix:focus {
+  border-bottom: 1px solid #607d8b;
+  box-shadow: #607d8b;
+}
+
+.input-field .prefix.active {
+  color: #607d8b !important;
+}
+
+
 @media (max-width: 480px) {
   .article-img {
     height: 200px;

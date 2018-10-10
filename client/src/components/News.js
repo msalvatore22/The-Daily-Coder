@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import * as actions from "../actions";
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import {Collapsible, CollapsibleItem} from 'react-materialize'
+import {Collapsible, CollapsibleItem} from 'react-materialize';
+import SearchBar from './SearchBar'
 
 class News extends Component {
  componentWillMount(){
@@ -12,7 +13,7 @@ class News extends Component {
   renderNews(){
    return _.map(this.props.news, article => {
      return (
-        <div style={{ textAlign: 'center'}}>
+        <div key={article.title} style={{ textAlign: 'center'}}>
           <img className="article-img" src={article.urlToImage}/>
          <Collapsible className="blue-grey lighten-5">
           <CollapsibleItem header={article.title}>
@@ -26,8 +27,6 @@ class News extends Component {
         </Collapsible>
         
         </div>
-       
-
      )
    })
  }
@@ -35,9 +34,10 @@ class News extends Component {
    return (
      <div className="row">
        <div className="col l6 offset-l3 s12">
-          <ul>
+          <SearchBar />
+          
             {this.renderNews()}
-          </ul>
+          
         </div>
      </div>
      

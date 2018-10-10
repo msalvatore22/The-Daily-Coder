@@ -4,9 +4,19 @@ const axios = require('axios');
 
 module.exports = (app) => {
   app.get('/api/news', requireLogin, async (req, res) => {
-    const newsData = await axios.get(`https://newsapi.org/v2/everything?q=Software&from=2018-09-18&sortBy=popularity&apiKey=${keys.newsAPI}`)
+    const newsData = await axios.get(`https://newsapi.org/v2/everything?q=Software&sortBy=popularity&apiKey=${keys.newsAPI}`)
   
     res.send(newsData.data.articles);
+
+  })
+
+  app.post('/api/news', requireLogin, async (req, res) => {
+    const {topic} = req.body
+
+    const newsData = await axios.get(`https://newsapi.org/v2/everything?q=${topic}&sortBy=popularity&apiKey=${keys.newsAPI}`)
+  
+    res.send(newsData.data.articles);
+    
   })
 
 }
