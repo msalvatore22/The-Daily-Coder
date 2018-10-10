@@ -7,7 +7,7 @@ class SearchBar extends Component {
   renderField(field){
     return (
       <div className="row">
-        <div className="input-field col s12 l6 offset-l3">
+        <div className="input-field col s12">
           <i className="material-icons prefix">search</i>
           <input
             id="icon_prefix" 
