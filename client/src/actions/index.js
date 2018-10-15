@@ -21,3 +21,9 @@ export const searchNews = (values) => async dispatch => {
   dispatch({ type: SEARCH_NEWS, payload: res.data})
 }
 
+export const saveArticle = (values) => async dispatch => {
+  const res = await axios.post('/api/articles', values);
+
+  
+}
+

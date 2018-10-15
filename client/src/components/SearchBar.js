@@ -14,10 +14,10 @@ class SearchBar extends Component {
             type="text"
             {...field.input}
           />
-          <label for="icon_prefix">{field.label}</label>
+          <label htmlFor="icon_prefix">{field.label}</label>
           <button className="btn waves-effect waves-light blue-grey search-btn" type="submit">
             Submit
-            <i class="material-icons right">send</i>
+            <i className="material-icons right">send</i>
           </button>
         </div>
       </div>
