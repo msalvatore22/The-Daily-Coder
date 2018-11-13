@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { FETCH_USER, SAVE_ARTICLE } from './types';
-import { FETCH_NEWS } from './types';
-import { SEARCH_NEWS } from './types';
+import { FETCH_USER, FETCH_NEWS, SEARCH_NEWS, SAVE_ARTICLE } from './types';
+
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
