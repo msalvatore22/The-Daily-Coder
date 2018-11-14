@@ -22,4 +22,12 @@ module.exports = (app) => {
     res.send(user)
 
   });
+
+  app.get('/api/articles', requireLogin, (req, res) => {
+    Article.find({}).then(function (articles){
+      
+      res.send(articles)
+    })
+  })
+
 };

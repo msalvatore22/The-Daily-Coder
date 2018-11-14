@@ -6,6 +6,7 @@ import * as actions from '../actions';
 import Header from './Header'
 import Landing from './Landing'
 import News from './News'
+import MyArticles from './my_articles'
 
 class App extends Component {
   componentDidMount() {
@@ -20,6 +21,7 @@ class App extends Component {
             <Header />
             <Route exact path="/" component={Landing} />
             <Route exact path="/newsfeed" component={News} />
+            <Route exact path="/articles" component={MyArticles} />
           </div>
         </BrowserRouter>
       </div>

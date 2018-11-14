@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_NEWS, SEARCH_NEWS, SAVE_ARTICLE } from './types';
+import { FETCH_USER, FETCH_NEWS, SEARCH_NEWS, SAVE_ARTICLE, FETCH_SAVED_ARTICLES } from './types';
 
 
 export const fetchUser = () => async dispatch => {
@@ -24,5 +24,11 @@ export const saveArticle = (values) => async dispatch => {
   const res = await axios.post('/api/articles', values);
 
   dispatch({ type: SAVE_ARTICLE, payload: res.data})
+}
+
+export const fetchSavedArticles = () => async dispatch => {
+  const res = await axios.get('/api/articles');
+
+  dispatch({ type: FETCH_SAVED_ARTICLES, payload: res.data })
 }
 

@@ -7,6 +7,6 @@ import articleReducer from './articleReducer';
 export default combineReducers({
   auth: authReducer,
   news: newsReducer,
-  article: articleReducer,
+  articles: articleReducer,
   form: formReducer
 });
