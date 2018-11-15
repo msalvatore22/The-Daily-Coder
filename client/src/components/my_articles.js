@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchSavedArticles } from "../actions";
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 
 class MyArticles extends Component {
   componentWillMount(){
     this.props.fetchSavedArticles();
-    console.log(this.props.article)
   }
   
   renderArticles(){
     return _.map(this.props.articles, article => {
       return (
-        <div key={article.title} >
-          <p>{article.title}</p>
+        <div key={article._id} >
+          <Link to={`/articles/${article._id}`}>
+            {article.title}
+          </Link>
         </div>
       )
     })

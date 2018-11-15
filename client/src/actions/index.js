@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_NEWS, SEARCH_NEWS, SAVE_ARTICLE, FETCH_SAVED_ARTICLES } from './types';
+import { FETCH_USER, FETCH_NEWS, SEARCH_NEWS, SAVE_ARTICLE, FETCH_SAVED_ARTICLES, FETCH_SAVED_ARTICLE, DELETE_SAVED_ARTICLE } from './types';
 
 
 export const fetchUser = () => async dispatch => {
@@ -32,3 +32,15 @@ export const fetchSavedArticles = () => async dispatch => {
   dispatch({ type: FETCH_SAVED_ARTICLES, payload: res.data })
 }
 
+export const fetchSavedArticle = (id) => async dispatch => {
+  const res = await axios.get(`/api/articles/${id}`)
+
+  dispatch({type: FETCH_SAVED_ARTICLE, payload: res.data })
+}
+
+export const deleteSavedArticle = (id, callback) => async dispatch => {
+  const res = await axios.delete(`/api/articles/${id}`).then(() => callback())
+
+  dispatch({type: DELETE_SAVED_ARTICLE, payload: id})
+
+}

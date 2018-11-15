@@ -30,4 +30,21 @@ module.exports = (app) => {
     })
   })
 
+  app.get('/api/articles/:id', requireLogin, (req, res) => {
+
+    Article.findById(req.params.id).then(article => {
+      res.send(article)
+    })
+  })
+
+  app.delete('/api/articles/:id', requireLogin, (req, res) => {
+    Article.findByIdAndDelete({_id: req.params.id }, function(err){
+      if(err){
+        alert("something bad happened")
+      }else{
+        console.log("article deleted")
+      }
+    })
+  })
+
 };
