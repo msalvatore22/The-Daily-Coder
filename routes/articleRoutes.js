@@ -16,7 +16,10 @@ module.exports = (app) => {
       dateSaved: Date.now()
     })
 
-    await article.save()
+    await article.save((err) => {
+      console.log(err.message)
+    })
+
     const user = await req.user.save()
 
     res.send(user)
