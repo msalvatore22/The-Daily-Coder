@@ -27,8 +27,11 @@ class NewsDetail extends Component {
       url,
       img_url
     }
-
-    this.props.saveArticle(values)
+    
+    this.props.saveArticle(values, () => {
+      this.props.history.push('/articles')
+    })
+    
   }
 
   

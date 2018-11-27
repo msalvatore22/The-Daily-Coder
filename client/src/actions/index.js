@@ -20,10 +20,11 @@ export const searchNews = (values) => async dispatch => {
   dispatch({ type: SEARCH_NEWS, payload: res.data})
 }
 
-export const saveArticle = (values) => async dispatch => {
+export const saveArticle = (values, callback) => async dispatch => {
   const res = await axios.post('/api/articles', values);
 
   dispatch({ type: SAVE_ARTICLE, payload: res.data})
+  callback()
 }
 
 export const fetchSavedArticles = () => async dispatch => {
@@ -38,9 +39,8 @@ export const fetchSavedArticle = (id) => async dispatch => {
   dispatch({type: FETCH_SAVED_ARTICLE, payload: res.data })
 }
 
-export const deleteSavedArticle = (id, callback) => async dispatch => {
-  const res = await axios.delete(`/api/articles/${id}`).then(() => callback())
+export const deleteSavedArticle = (id) => async dispatch => {
+  const res = await axios.delete(`/api/articles/${id}`);
 
-  dispatch({type: DELETE_SAVED_ARTICLE, payload: id})
-
+  dispatch({type: DELETE_SAVED_ARTICLE, payload: id});
 }

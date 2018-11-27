@@ -13,9 +13,8 @@ class MyArticlesShow extends Component {
   onDeleteClick(){
     const { id } = this.props.match.params;
     
-    this.props.deleteSavedArticle(id, () => {
-      this.props.history.push('/articles')
-    })
+    this.props.deleteSavedArticle(id)
+    this.props.history.push('/articles');
   }
 
   render(){
