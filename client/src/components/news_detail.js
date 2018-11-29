@@ -39,18 +39,19 @@ class NewsDetail extends Component {
     const article = this.props.article
     // const { handleSubmit } = this.props
     if(!article){
-      return <div></div>
+      return <div className="col l3 offset-l1 s4 news-detail"><p>Search for Anything!</p></div>
     } else {
       return(
-        <div className="col s6 offset-s2">
+        <div className="col l3 offset-l1 s4 news-detail">
           <img className="article-img" src={article.urlToImage}/>
           <h5>{article.title}</h5>
           <p>{article.author}</p>
           <p>{article.description}</p>
           <a target="_blank" href={article.url}>Full Story Here</a>
-          <div>
-            <form onSubmit={this.handleSubmit}>
+        <div>
+            <form className="news-detail-form" onSubmit={this.handleSubmit}>
               <input
+                className="article-save-input"
                 readOnly
                 label="title"
                 name="title"
@@ -60,6 +61,7 @@ class NewsDetail extends Component {
                 component='input'
               />
               <input
+                className="article-save-input"
                 readOnly
                 label="author"
                 name="author"
@@ -69,6 +71,7 @@ class NewsDetail extends Component {
                 component='input'
               />
               <input
+                className="article-save-input"
                 readOnly
                 label="url"
                 name="url"
@@ -78,6 +81,7 @@ class NewsDetail extends Component {
                 component='input'
               />
               <input
+                className="article-save-input"
                 readOnly
                 label="img_url"
                 name="img_url"
@@ -86,7 +90,7 @@ class NewsDetail extends Component {
                 ref={this.img_url}
                 component='input'
               />
-              <button className="btn waves-effect waves-light blue-grey search-btn" type="submit">
+              <button className="btn waves-effect waves-light blue-grey save-btn" type="submit">
                 Save Article
                 <i className="material-icons right">send</i>
               </button>

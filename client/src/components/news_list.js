@@ -12,11 +12,9 @@ const NewsList = (props) => {
     
   });
    return (
-    <div className="col s3">
-      <ul>
-        {articles}
-      </ul>
-    </div>
+    <ul className="news-list">
+      {articles}
+    </ul>
     
   )
 }

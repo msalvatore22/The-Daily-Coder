@@ -20,16 +20,22 @@ class News extends Component {
   componentWillMount(){
    this.props.fetchNews();
  }
- 
+
   render(){
    return (
      <div className="row">
-       <div className="col l6 offset-l3 s12">
+       <div className="col s12">
+          
           <SearchBar />
+          
           <NewsDetail history={this.props.history} article={this.state.selectedArticle}/>
-          <NewsList articles={this.props.news.articles}
-            onArticleSelect={selectedArticle => this.setState({selectedArticle})}
-          />
+
+          <div className="col l8 offset-l4 s4 offset-s6">
+            <NewsList articles={this.props.news.articles}
+              onArticleSelect={selectedArticle => this.setState({selectedArticle})}
+            />
+          </div>
+          
           
         </div>
      </div>

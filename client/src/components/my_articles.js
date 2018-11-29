@@ -16,6 +16,12 @@ class MyArticles extends Component {
           <Link to={`/articles/${article._id}`}>
             {article.title}
           </Link>
+          <img className="article-img" src={article.img_url}/>
+          <h5>{article.title}</h5>
+          <p>{article.author}</p>
+          <p>{article.description}</p>
+          <a target="_blank" href={article.url}>Full Story Here</a>
+        
         </div>
       )
     })

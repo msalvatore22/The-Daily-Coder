@@ -2,8 +2,7 @@ import { FETCH_NEWS, SEARCH_NEWS } from '../actions/types';
 
 
  const initialState = {
-   articles: [],
-   selectedArticle: null
+   articles: []
  }
 
 export default function(state = initialState, action) {

@@ -17,7 +17,7 @@ module.exports = (app) => {
     })
 
     await article.save((err) => {
-      console.log(err.message)
+      console.log(err)
     })
 
     const user = await req.user.save()
