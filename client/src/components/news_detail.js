@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { saveArticle } from "../actions";
-import { reduxForm, Field } from 'redux-form';
 
 class NewsDetail extends Component { 
   constructor(props){
@@ -37,7 +36,6 @@ class NewsDetail extends Component {
   
   render(){
     const article = this.props.article
-    // const { handleSubmit } = this.props
     if(!article){
       return <div className="col l3 offset-l1 s4 news-detail"><p>Search for Anything!</p></div>
     } else {
@@ -91,8 +89,8 @@ class NewsDetail extends Component {
                 component='input'
               />
               <button className="btn waves-effect waves-light blue-grey save-btn" type="submit">
-                Save Article
-                <i className="material-icons right">send</i>
+                Bookmark
+                <i className="material-icons right">bookmark</i>
               </button>
             </form>
             
@@ -104,50 +102,5 @@ class NewsDetail extends Component {
     
   }
 }
-
-// function validate(values){
-//   const errors = {};
-
-//   //validate the Fields from values
-//   if(!values.title) {
-//     errors.title = "Enter a title!"
-//   }
-
-//   if(!values.author) {
-//     errors.author = "Enter a author!"
-//   }
-
-//   if(!values.url) {
-//     errors.url = "Enter a url!"
-//   }
-
-//   if(!values.img_url) {
-//     errors.img_url = "Enter a url!"
-//   }
-
-//   //if errors is empty, submit form
-//   //if errors has any properties, redux assumes its invalid
-//   return errors;
-// }
-
-// function mapStateToProps(state, props){
-//   return {
-//       initialValues: {
-//         title: props.article.title,
-//         author: props.article.author,
-//         url: props.article.url,
-//         img_url: props.article.urlToImage
-//       }
-//     }
-// }
-
-
-// export default reduxForm({
-//   validate,
-//   enableReinitialize: true,
-//   form: 'SaveArticleForm'
-// })(
-//   connect(null, {saveArticle})(NewsDetail)
-// );
 
 export default connect(null, {saveArticle})(NewsDetail)

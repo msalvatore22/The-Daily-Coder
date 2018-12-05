@@ -1,3 +1,7 @@
+#root {
+  font-family: 'Slabo 27px', serif;
+}
+
 .news-detail {
   position: fixed;
   margin-top: 30px;
@@ -49,8 +53,13 @@
   display: none;
 }
 
+.collection-item {
+  border-bottom: 1px solid #E0E0E0 !important;
+}
+
+
 .search-bar {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .search-btn {
@@ -58,8 +67,16 @@
   margin-left: 45px;
 }
 
+.character-counter {
+  display: none;
+}
+
 .save-btn {
   margin-top: 10px;
+}
+
+.delete-btn {
+  margin: 10px 0;
 }
 
 #icon_prefix {

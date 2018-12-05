@@ -12,26 +12,31 @@ class MyArticles extends Component {
   renderArticles(){
     return _.map(this.props.articles, article => {
       return (
-        <div key={article._id} >
-          <Link to={`/articles/${article._id}`}>
+        <li className="collection-item avatar">
+          <img src={article.img_url} className="circle"></img>
+          <span className="title">
             {article.title}
+          </span>
+          <p>
+          
+          {article.author} <br />
+          {article.dateSaved} <br />
+          
+          <a target="_blank" href={article.url}>See Full Story</a>
+          </p>
+          <Link className="secondary-content" to={`/articles/${article._id}`}>
+            <i className="material-icons">delete_sweep</i>
           </Link>
-          <img className="article-img" src={article.img_url}/>
-          <h5>{article.title}</h5>
-          <p>{article.author}</p>
-          <p>{article.description}</p>
-          <a target="_blank" href={article.url}>Full Story Here</a>
-        
-        </div>
+        </li>
       )
-    })
+    }).reverse()
   }
 
   render(){
     return (
-      <div>
+      <ul class="collection">
         {this.renderArticles()}
-      </div>
+      </ul> 
     )
   }
 }

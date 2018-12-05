@@ -21,18 +21,22 @@ class MyArticlesShow extends Component {
     const { articles } = this.props
 
     if(!articles){
-      return <div>Loading...</div>
+      return <div>You have no saved articles.</div>
     }
     return (
-      <div>
-      <Link to="/articles">Back to my articles</Link>
-      
-      <h1>{articles.title}</h1>
-      <button onClick={this.onDeleteClick.bind(this)}>
-        Delete Article
-      </button>
-      
-        
+      <div className="row">
+      <div className="news-detail col l4 offset-l4">
+        <img className="article-img" src={articles.img_url} />
+        <h5>{articles.title}</h5>
+        <p>{articles.author}</p>
+        <p>{articles.description}</p>
+        <a target="_blank" href={articles.url}>Full Story Here</a> <br />
+        <Link to="/articles">Back to my articles</Link> <br />
+        <button className="btn waves-effect waves-light blue-grey delete-btn" onClick={this.onDeleteClick.bind(this)}>
+          Delete Article
+          <i className="material-icons right">delete</i>
+        </button>
+      </div>
       </div>
     )
   }

@@ -13,7 +13,11 @@ const NewsList = (props) => {
   });
    return (
     <ul className="news-list">
-      {articles}
+      
+        
+        {articles}
+        
+
     </ul>
     
   )

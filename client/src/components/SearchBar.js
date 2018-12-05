@@ -7,7 +7,7 @@ class SearchBar extends Component {
   renderField(field){
     return (
       <div className="row">
-        <div className="input-field col s12">
+        <div className="input-field col l6 offset-l3 s12">
           <i className="material-icons prefix">search</i>
           <input
             id="icon_prefix" 
@@ -16,8 +16,8 @@ class SearchBar extends Component {
           />
           <label htmlFor="icon_prefix">{field.label}</label>
           <button className="btn waves-effect waves-light blue-grey search-btn" type="submit">
-            Submit
-            <i className="material-icons right">send</i>
+            Search
+            <i className="material-icons right">search</i>
           </button>
         </div>
       </div>
