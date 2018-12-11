@@ -30,9 +30,9 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-/* #news-list-li > p {
+#news-list-li > p {
   width: 200px;
-} */
+}
 
 #news-list-li:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -133,6 +133,10 @@
 
   #news-list-li:first-child {
     margin-top: -45px;
+  }
+
+  #news-list-li > p {
+    width: 100px;
   }
 
   nav .brand-logo.center {

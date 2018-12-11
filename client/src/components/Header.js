@@ -46,24 +46,24 @@ class Header extends Component {
           <ul className="right hide-on-med-and-down">
             {this.renderContent()}
           </ul>
-          <form className="hide-on-med-and-down">
+          {/* <form className="hide-on-med-and-down">
             <div className="input-field" style={{maxWidth: '300px'}}>
             <input id="search" type="search" required />
             <label className="label-icon"><i className="material-icons">search</i></label>
             <i className="material-icons">close</i>
             </div>
-          </form>
+          </form> */}
         </div>
       </nav>
       
       <ul className="sidenav" id="mobile">
-      <form>
+      {/* <form>
             <div className="input-field" style={{maxWidth: '300px'}}>
             <input id="search" type="search" name="topic" required />
             <label className="label-icon"><i className="material-icons">search</i></label>
             <i className="material-icons">close</i>
             </div>
-          </form>
+          </form> */}
         {this.renderContent()}
       </ul>
      </div>

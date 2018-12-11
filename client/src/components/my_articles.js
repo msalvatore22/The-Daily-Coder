@@ -22,7 +22,12 @@ class MyArticles extends Component {
           {article.author} <br />
           {article.dateSaved} <br />
           
-          <a target="_blank" href={article.url}>See Full Story</a>
+          <a target="_blank" href={article.url}>
+            <button className="btn waves-effect waves-light blue-grey btn-small delete-btn">
+                Full Article
+                <i className="material-icons right">explore</i>
+            </button>
+          </a>
           </p>
           <Link className="secondary-content" to={`/articles/${article._id}`}>
             <i className="material-icons collection-icon">delete_sweep</i>

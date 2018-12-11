@@ -30,9 +30,29 @@ class MyArticlesShow extends Component {
         <h5>{articles.title}</h5>
         <p>{articles.author}</p>
         <p>{articles.description}</p>
-        <a target="_blank" href={articles.url}>Full Story Here</a> <br />
-        <Link to="/articles">Back to my articles</Link> <br />
-        <button className="btn waves-effect waves-light blue-grey delete-btn" onClick={this.onDeleteClick.bind(this)}>
+        <a target="_blank" href={articles.url}>
+          <button className="btn waves-effect waves-light blue-grey left">
+            Full Article
+            <i className="material-icons right">explore</i>
+          </button>
+        
+        </a>
+        <br></br>
+        <br></br>
+        
+        
+        
+        <Link style={{color: 'white'}} to="/articles">
+          <button className="btn waves-effect waves-light blue-grey delete-btn left">
+            back
+            <i className="material-icons left">reply</i>
+          </button>
+          
+        </Link>
+          
+
+        
+        <button className="btn waves-effect waves-light red accent-4 delete-btn right" onClick={this.onDeleteClick.bind(this)}>
           Delete Article
           <i className="material-icons right">delete</i>
         </button>

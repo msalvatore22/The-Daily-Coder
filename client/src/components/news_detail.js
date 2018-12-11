@@ -48,7 +48,14 @@ class NewsDetail extends Component {
           <p>{article.title}</p>
           <p>{article.author}</p>
           <p>{article.description}</p>
-          <a target="_blank" href={article.url}>Full Story Here</a>
+
+          
+          <a target="_blank" href={article.url}>
+            <button className="btn waves-effect waves-light blue-grey delete-btn left">
+              Full Article
+              <i className="material-icons right">explore</i>
+            </button>
+          </a>
         <div>
             <form className="news-detail-form" onSubmit={this.handleSubmit}>
               <input
@@ -91,7 +98,7 @@ class NewsDetail extends Component {
                 ref={this.img_url}
                 component='input'
               />
-              <button className="btn waves-effect waves-light blue-grey save-btn" type="submit">
+              <button className="btn waves-effect waves-light blue-grey save-btn right" type="submit">
                 Bookmark
                 <i className="material-icons right">bookmark</i>
               </button>
