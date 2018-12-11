@@ -10,6 +10,10 @@ class MyArticles extends Component {
   }
   
   renderArticles(){
+    if(!this.props.articles){
+      return <div style={{textAlign: 'center'}}><h1>You have no saved articles.</h1></div>
+    }
+    
     return _.map(this.props.articles, article => {
       let indexOfT = article.dateSaved.indexOf('T')
       return (
