@@ -7,7 +7,7 @@ const Landing = () => {
         The Daily Coder
       </h1>
       <h5>
-        Coding News Catered to You
+        Coding News Catered To You
       </h5>
     </div>
   )

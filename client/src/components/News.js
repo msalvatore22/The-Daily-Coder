@@ -2,42 +2,34 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from "../actions";
 import _ from 'lodash';
-import { Link } from 'react-router-dom';
-import {Collapsible, CollapsibleItem} from 'react-materialize';
 import SearchBar from './SearchBar'
+import NewsList from './news_list'
+import NewsDetail from './news_detail'
 
 class News extends Component {
- componentWillMount(){
+  constructor(props){
+    super(props)
+    
+    this.state = {
+      selectedArticle: null
+    }
+  }
+  
+  componentWillMount(){
    this.props.fetchNews();
  }
-  renderNews(){
-   return _.map(this.props.news, article => {
-     return (
-        <div key={article.title} style={{ textAlign: 'center'}}>
-          <img className="article-img" src={article.urlToImage}/>
-         <Collapsible className="blue-grey lighten-5">
-          <CollapsibleItem header={article.title}>
-            <div style={{ textAlign: 'center'}}>
-            <p>{article.author}</p>
-            <p>{article.description}</p>
-            <a target="_blank" href={article.url}>Full Story Here</a>
-            </div>
-          </CollapsibleItem>
 
-        </Collapsible>
-        
-        </div>
-     )
-   })
- }
   render(){
    return (
      <div className="row">
-       <div className="col l6 offset-l3 s12">
+       <div className="col s12">
           <SearchBar />
-          
-            {this.renderNews()}
-          
+          <NewsDetail history={this.props.history} article={this.state.selectedArticle}/>
+          <div className="col l8 offset-l4 s4 offset-s8">
+            <NewsList articles={this.props.news.articles}
+              onArticleSelect={selectedArticle => this.setState({selectedArticle})}
+            />
+          </div>
         </div>
      </div>
      

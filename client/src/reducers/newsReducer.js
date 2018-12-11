@@ -1,12 +1,20 @@
-import { FETCH_NEWS } from '../actions/types';
-import { SEARCH_NEWS } from '../actions/types';
+import { FETCH_NEWS, SEARCH_NEWS } from '../actions/types';
 
-export default function(state = {}, action) {
+
+ const initialState = {
+   articles: []
+ }
+
+export default function(state = initialState, action) {
   switch (action.type) {
     case FETCH_NEWS:
-      return action.payload
+      return Object.assign({}, state, {
+        articles: action.payload
+      })
     case SEARCH_NEWS:
-      return action.payload
+      return Object.assign({}, state, {
+        articles: action.payload
+      })
     default:
       return state;
   }

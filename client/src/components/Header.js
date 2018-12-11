@@ -1,36 +1,57 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import M from "materialize-css/dist/js/materialize.min.js";
 
 class Header extends Component {
+  componentDidMount(){
+    var elem = document.querySelector(".sidenav");
+    M.Sidenav.init(elem, {
+        edge: "right",
+        inDuration: 250
+      });
+  }
+  
   renderContent(){
     switch (this.props.auth) {
       case null:
         return;
       case false:
         return (
-          <li><a href="/auth/google">Login with google</a></li>
+          <li><a href="/auth/google"><i className="material-icons">lock_outline</i></a></li>
         )
       default:
-      return <li><a href="/api/logout">logout</a></li>
+      return (
+        <div>
+          <li><Link to={'/articles'} ><i className="material-icons">collections_bookmark</i></Link></li>
+          <li><a href="/api/logout"><i className="material-icons">lock_open</i></a></li>
+        </div>
+      )
     }
   }
-  
+
   render() {
     return (
-      <nav>
-        <div className="nav-wrapper blue-grey">
-          <Link 
-            to={this.props.auth ? '/newsfeed' : '/'}
-            className="left brand-logo"
-          >
-            The Daily Coder
-          </Link>
-          <ul className="right">
-            {this.renderContent()}
-          </ul>
-        </div>
-      </nav>
+      <div>
+        <nav>
+          <div className="nav-wrapper blue-grey">
+            <Link 
+              to={this.props.auth ? '/newsfeed' : '/'}
+              className="center brand-logo"
+            >
+              THE DAILY CODER
+            </Link>
+            <a data-target="mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+            
+            <ul className="right hide-on-med-and-down">
+              {this.renderContent()}
+            </ul>
+          </div>
+        </nav>
+        <ul className="sidenav" id="mobile">
+          {this.renderContent()}
+        </ul>
+     </div>
     );
   }
 }
