@@ -7,9 +7,9 @@ class Header extends Component {
   componentDidMount(){
     var elem = document.querySelector(".sidenav");
     M.Sidenav.init(elem, {
-            edge: "right",
-            inDuration: 250
-        });
+        edge: "right",
+        inDuration: 250
+      });
   }
   
   renderContent(){
@@ -33,39 +33,24 @@ class Header extends Component {
   render() {
     return (
       <div>
-      <nav>
-        <div className="nav-wrapper blue-grey">
-          <Link 
-            to={this.props.auth ? '/newsfeed' : '/'}
-            className="center brand-logo"
-          >
-            THE DAILY CODER
-          </Link>
-          <a href="#" data-target="mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
-          
-          <ul className="right hide-on-med-and-down">
-            {this.renderContent()}
-          </ul>
-          {/* <form className="hide-on-med-and-down">
-            <div className="input-field" style={{maxWidth: '300px'}}>
-            <input id="search" type="search" required />
-            <label className="label-icon"><i className="material-icons">search</i></label>
-            <i className="material-icons">close</i>
-            </div>
-          </form> */}
-        </div>
-      </nav>
-      
-      <ul className="sidenav" id="mobile">
-      {/* <form>
-            <div className="input-field" style={{maxWidth: '300px'}}>
-            <input id="search" type="search" name="topic" required />
-            <label className="label-icon"><i className="material-icons">search</i></label>
-            <i className="material-icons">close</i>
-            </div>
-          </form> */}
-        {this.renderContent()}
-      </ul>
+        <nav>
+          <div className="nav-wrapper blue-grey">
+            <Link 
+              to={this.props.auth ? '/newsfeed' : '/'}
+              className="center brand-logo"
+            >
+              THE DAILY CODER
+            </Link>
+            <a data-target="mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+            
+            <ul className="right hide-on-med-and-down">
+              {this.renderContent()}
+            </ul>
+          </div>
+        </nav>
+        <ul className="sidenav" id="mobile">
+          {this.renderContent()}
+        </ul>
      </div>
     );
   }

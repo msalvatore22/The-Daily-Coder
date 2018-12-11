@@ -33,14 +33,15 @@ class NewsDetail extends Component {
     
   }
 
-  
   render(){
     const article = this.props.article
     if(!article){
-      return <div className="col l3 offset-l1 s7 news-detail">
-                <h4>Welcome to The Daily Coder</h4>
-                <h5>Search, read, and bookmark your favorite coding articles!</h5>
-            </div>
+      return( 
+        <div style={{textAlign: 'center'}} className="col l3 offset-l1 s7 news-detail">
+          <h4>Welcome to The Daily Coder</h4>
+          <h5>Search, read, and bookmark your favorite coding articles!</h5>
+        </div>
+      )
     } else {
       return(
         <div className="col l3 offset-l1 s7 news-detail">
@@ -48,10 +49,8 @@ class NewsDetail extends Component {
           <p>{article.title}</p>
           <p>{article.author}</p>
           <p>{article.description}</p>
-
-          
           <a target="_blank" href={article.url}>
-            <button className="btn waves-effect waves-light blue-grey delete-btn left">
+            <button className="btn btn-small waves-effect waves-light blue-grey delete-btn left">
               Full Article
               <i className="material-icons right">explore</i>
             </button>
@@ -98,14 +97,12 @@ class NewsDetail extends Component {
                 ref={this.img_url}
                 component='input'
               />
-              <button className="btn waves-effect waves-light blue-grey save-btn right" type="submit">
+              <button className="btn btn-small waves-effect waves-light blue-grey save-btn right" type="submit">
                 Bookmark
                 <i className="material-icons right">bookmark</i>
               </button>
             </form>
-            
           </div>
-        
         </div>
       )
     }
