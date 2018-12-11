@@ -17,36 +17,44 @@ module.exports = (app) => {
     })
 
     await article.save((err) => {
-      console.log(err)
+      if(err){
+        return res.status(500).send(err)
+      }
+      return res.status(200).send(article)
     })
-
-    const user = await req.user.save()
-
-    res.send(user)
 
   });
 
   app.get('/api/articles', requireLogin, (req, res) => {
-    Article.find({}).then(function (articles){
-      
-      res.send(articles)
+    Article.find({}).then(function (articles, err){
+      if(err) {
+        return res.status(500).send(err)
+      }
+      return res.status(200).send(articles)
     })
   })
 
   app.get('/api/articles/:id', requireLogin, (req, res) => {
 
-    Article.findById(req.params.id).then(article => {
-      res.send(article)
+    Article.findById(req.params.id).then((article, err) => {
+      if(err){
+        return res.status(500).send(err)
+      }
+      return res.status(200).send(article)
     })
   })
 
-  app.delete('/api/articles/:id', requireLogin, (req, res) => {
-    Article.findByIdAndDelete({_id: req.params.id }, function(err){
+  app.delete('/api/articles/:id', requireLogin, async (req, res) => {
+    await Article.findByIdAndDelete({_id: req.params.id }, function(err, article){
       if(err){
-        alert("something bad happened")
-      }else{
-        console.log("article deleted")
+        return res.status(500).send(err)
       }
+      const response = {
+        message: 'Article successfully deleted',
+        id: article._id
+      }
+
+      return res.status(200).send(response)
     })
   })
 

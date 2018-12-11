@@ -39,8 +39,9 @@ export const fetchSavedArticle = (id) => async dispatch => {
   dispatch({type: FETCH_SAVED_ARTICLE, payload: res.data })
 }
 
-export const deleteSavedArticle = (id) => async dispatch => {
-  const res = await axios.delete(`/api/articles/${id}`);
+export const deleteSavedArticle = (id, callback) => async dispatch => {
+  const res = await axios.delete(`/api/articles/${id}`, id);
 
   dispatch({type: DELETE_SAVED_ARTICLE, payload: id});
+  callback()
 }

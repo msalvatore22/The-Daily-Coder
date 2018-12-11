@@ -11,15 +11,17 @@ class MyArticlesShow extends Component {
 
   onDeleteClick(){
     const { id } = this.props.match.params;
-    this.props.deleteSavedArticle(id)
-    this.props.history.push('/articles');
+    this.props.deleteSavedArticle(id, () => {
+      this.props.history.push('/articles');
+    })
+    
   }
 
   render(){
     const { articles } = this.props
 
     if(!articles){
-      return <div style={{textAlign: 'center'}}><h1>You have no saved articles.</h1></div>
+      return <div style={{textAlign: 'center'}}><h1>Loading...</h1></div>
     }
     return (
       <div className="row">
