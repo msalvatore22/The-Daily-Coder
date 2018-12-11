@@ -25,7 +25,7 @@ class MyArticles extends Component {
           <a target="_blank" href={article.url}>See Full Story</a>
           </p>
           <Link className="secondary-content" to={`/articles/${article._id}`}>
-            <i className="material-icons">delete_sweep</i>
+            <i className="material-icons collection-icon">delete_sweep</i>
           </Link>
         </li>
       )

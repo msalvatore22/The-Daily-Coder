@@ -30,7 +30,7 @@ class News extends Component {
           
           <NewsDetail history={this.props.history} article={this.state.selectedArticle}/>
 
-          <div className="col l8 offset-l4 s4 offset-s6">
+          <div className="col l8 offset-l4 s4 offset-s8">
             <NewsList articles={this.props.news.articles}
               onArticleSelect={selectedArticle => this.setState({selectedArticle})}
             />

@@ -37,12 +37,15 @@ class NewsDetail extends Component {
   render(){
     const article = this.props.article
     if(!article){
-      return <div className="col l3 offset-l1 s4 news-detail"><p>Search for Anything!</p></div>
+      return <div className="col l3 offset-l1 s7 news-detail">
+                <h4>Welcome to The Daily Coder</h4>
+                <h5>Search, read, and bookmark your favorite coding articles!</h5>
+            </div>
     } else {
       return(
-        <div className="col l3 offset-l1 s4 news-detail">
+        <div className="col l3 offset-l1 s7 news-detail">
           <img className="article-img" src={article.urlToImage}/>
-          <h5>{article.title}</h5>
+          <p>{article.title}</p>
           <p>{article.author}</p>
           <p>{article.description}</p>
           <a target="_blank" href={article.url}>Full Story Here</a>

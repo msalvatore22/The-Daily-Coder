@@ -38,7 +38,7 @@ class SearchBar extends Component {
       <div className="row">
         <form className="col s12 search-bar" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field 
-            label="Search News Topics"
+            label="Search Topics"
             name="topic"
             component={this.renderField}
           />
