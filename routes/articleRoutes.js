@@ -16,11 +16,14 @@ module.exports = (app) => {
       dateSaved: Date.now()
     })
 
-    await article.save((err) => {
+    await article.save((err, article) => {
       if(err){
-        return res.status(500).send(err)
+        console.log(err)
+        return res.status(400).send({status: 400, message: 'Article failed to save, or already saved'})
       }
+        
       return res.status(200).send(article)
+      
     })
 
   });

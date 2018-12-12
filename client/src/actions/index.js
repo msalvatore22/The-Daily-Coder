@@ -21,10 +21,15 @@ export const searchNews = (values) => async dispatch => {
 }
 
 export const saveArticle = (values, callback) => async dispatch => {
-  const res = await axios.post('/api/articles', values);
-
-  dispatch({ type: SAVE_ARTICLE, payload: res.data})
-  callback()
+  try {
+    const res = await axios.post('/api/articles', values);
+    dispatch({ type: SAVE_ARTICLE, payload: res.data})
+    callback()
+  } catch(error) {
+    console.error('failed to save article')
+    alert('Failed to save article, or article already saved!')
+  }
+  
 }
 
 export const fetchSavedArticles = () => async dispatch => {
