@@ -8,7 +8,7 @@ const articleSchema = new Schema ({
   url: String,
   img_url: String,
   _user: { type: Schema.Types.ObjectId, ref: 'User'},
-  dateSaved: Date
+  dateSaved: String
 })
 
 articleSchema.plugin(uniqueValidator, { message: "Article Already Saved" })

@@ -45,7 +45,7 @@ class NewsDetail extends Component {
     } else {
       return(
         <div className="col l3 offset-l1 s7 news-detail">
-          <img className="article-img" src={article.urlToImage}/>
+          <img className="article-img" src={article.urlToImage} alt="article" />
           <p>{article.title}</p>
           <p>{article.author}</p>
           <p>{article.description}</p>

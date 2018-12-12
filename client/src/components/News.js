@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from "../actions";
-import _ from 'lodash';
 import SearchBar from './SearchBar'
 import NewsList from './news_list'
 import NewsDetail from './news_detail'

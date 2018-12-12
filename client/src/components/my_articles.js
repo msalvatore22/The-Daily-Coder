@@ -14,7 +14,6 @@ class MyArticles extends Component {
       return <div style={{textAlign: 'center'}}><h1>You have no saved articles.</h1></div>
     } else {
       return _.map(this.props.articles, article => {
-      
         return (
           <li key={article._id} className="collection-item avatar">
             <img src={article.img_url} className="circle" alt="article"></img>
@@ -22,6 +21,7 @@ class MyArticles extends Component {
               {article.title}
             </span>
             <p>{article.author}</p>
+            <p>Saved on {article.dateSaved}</p>
             <a target="_blank" href={article.url}>
               <button className="btn waves-effect waves-light blue-grey btn-small delete-btn">
                   Full Article
@@ -35,8 +35,6 @@ class MyArticles extends Component {
         )
       }).reverse()
     }
-    
-    
   }
 
   render(){
