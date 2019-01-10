@@ -18,13 +18,13 @@ class Header extends Component {
         return;
       case false:
         return (
-          <li><a href="/auth/google"><i className="material-icons">lock_outline</i></a></li>
+          <li><a href="/auth/google"><i className="material-icons">input</i></a></li>
         )
       default:
       return (
         <div>
           <li><Link to={'/articles'} ><i className="material-icons">collections_bookmark</i></Link></li>
-          <li><a href="/api/logout"><i className="material-icons">lock_open</i></a></li>
+          <li><a href="/api/logout"><i className="material-icons">power_settings_new</i></a></li>
         </div>
       )
     }
