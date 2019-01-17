@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header'
-import Landing from './Landing'
 import News from './News'
 import MyArticles from './my_articles'
 import MyArticlesShow from './my_articles_show'
@@ -20,8 +19,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/newsfeed" component={News} />
+            <Route exact path="/" component={News} />
             <Route exact path="/articles" component={MyArticles} />
             <Route path="/articles/:id" component={MyArticlesShow} />
           </div>

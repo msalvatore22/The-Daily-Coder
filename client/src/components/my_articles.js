@@ -38,6 +38,11 @@ class MyArticles extends Component {
   }
 
   render(){
+    if(!this.props.auth){
+      this.props.history.push({
+        pathname: '/'
+      })
+    }
     return (
       <ul className="collection">
         {this.renderArticles()}
@@ -46,8 +51,8 @@ class MyArticles extends Component {
   }
 }
 
-function mapStateToProps({articles}){
-  return { articles }
+function mapStateToProps({articles, auth}){
+  return { articles, auth }
 }
 
 export default connect(mapStateToProps, {fetchSavedArticles})(MyArticles)

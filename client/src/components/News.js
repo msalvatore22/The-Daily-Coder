@@ -17,7 +17,7 @@ class News extends Component {
   componentWillMount(){
    this.props.fetchNews();
  }
-
+ 
   render(){
    return (
      <div className="row">
@@ -30,8 +30,7 @@ class News extends Component {
             />
           </div>
         </div>
-     </div>
-     
+     </div> 
    )
  }
 }

@@ -39,7 +39,31 @@ class NewsDetail extends Component {
       return( 
         <div style={{textAlign: 'center'}} className="col l3 offset-l1 s7 news-detail">
           <h4>Welcome to The Daily Coder</h4>
-          <h5>Search, read, and bookmark your favorite coding articles!</h5>
+          <h5>Search, read, and bookmark your favorite articles!</h5>
+        </div>
+      )
+    } else if(article && !this.props.auth){
+      return(
+        <div className="col l3 offset-l1 s7 news-detail">
+          <img className="article-img" src={article.urlToImage} alt="article" />
+          <p>{article.title}</p>
+          <p>{article.author}</p>
+          <p>{article.description}</p>
+          <div className="news-detail-btns">
+          <a target="_blank" href={article.url}>
+            <button className="btn btn-small waves-effect waves-light blue-grey delete-btn left">
+              Full Article
+              <i className="material-icons right">explore</i>
+            </button>
+          </a>
+          <a href="/auth/google">
+            <button className="btn btn-small waves-effect waves-light blue-grey save-btn right">
+              Login to bookmark
+              <i className="material-icons right">input</i>
+            </button>
+          </a>
+          </div>
+          
         </div>
       )
     } else {
@@ -110,4 +134,8 @@ class NewsDetail extends Component {
   }
 }
 
-export default connect(null, {saveArticle})(NewsDetail)
+function mapStateToProps({auth}){
+  return { auth }
+}
+
+export default connect(mapStateToProps, {saveArticle})(NewsDetail)

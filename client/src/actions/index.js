@@ -27,7 +27,6 @@ export const saveArticle = (values, callback) => async dispatch => {
     callback()
   } catch(error) {
     console.error('failed to save article')
-    alert('Failed to save article, or article already saved!')
   }
   
 }

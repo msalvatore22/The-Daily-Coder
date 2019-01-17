@@ -21,6 +21,12 @@
   padding-bottom: 20px;
 }
 
+.news-detail-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .news-list {
   display: flex;
   flex-direction: row;
@@ -141,6 +147,10 @@
   }
 
   .news-detail > div > form > button > i {
+    display: none;
+  }
+
+  .news-detail-btns i {
     display: none;
   }
 

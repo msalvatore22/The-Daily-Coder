@@ -54,7 +54,6 @@ module.exports = (app) => {
   })
 
   app.get('/api/articles/:id', requireLogin, (req, res) => {
-
     Article.findById(req.params.id).then((article, err) => {
       if(err){
         return res.status(500).send(err)

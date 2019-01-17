@@ -19,6 +19,12 @@ class MyArticlesShow extends Component {
 
   render(){
     const { articles } = this.props
+    const { auth } = this.props
+    if(!auth){
+      this.props.history.push({
+        pathname: '/'
+      })
+    }
 
     if(!articles){
       return <div style={{textAlign: 'center'}}><h1>Loading...</h1></div>
@@ -54,8 +60,8 @@ class MyArticlesShow extends Component {
   }
 }
 
-function mapStateToProps({articles}){
-  return {articles}
+function mapStateToProps({articles, auth}){
+  return {articles, auth}
 }
 
 export default connect(mapStateToProps, {fetchSavedArticle, deleteSavedArticle})(MyArticlesShow)
