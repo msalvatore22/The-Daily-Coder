@@ -44,7 +44,7 @@ module.exports = (app) => {
   });
 
   app.get('/api/articles', requireLogin, (req, res) => {
-    Article.find({}).then(function (articles, err){
+    Article.find({_user: req.user.id}).then(function (articles, err){
       if(err) {
         return res.status(500).send(err)
       }
