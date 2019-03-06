@@ -37,14 +37,13 @@ class NewsDetail extends Component {
     const article = this.props.article
     if(!article){
       return( 
-        <div style={{textAlign: 'center'}} className="col l3 offset-l1 s7 news-detail">
-          <h4>Welcome to The Daily Coder</h4>
-          <h5>Search, read, and bookmark your favorite articles!</h5>
+        <div style={{textAlign: 'center'}} className="col l4 offset-l1 s7 news-detail">
+          <h4>Loading...</h4>
         </div>
       )
     } else if(article && !this.props.auth){
       return(
-        <div className="col l3 offset-l1 s7 news-detail">
+        <div className="col l4 offset-l1 s7 news-detail">
           <img className="article-img" src={article.urlToImage} alt="article" />
           <p>{article.title}</p>
           <p>{article.author}</p>
@@ -68,7 +67,7 @@ class NewsDetail extends Component {
       )
     } else {
       return(
-        <div className="col l3 offset-l1 s7 news-detail">
+        <div className="col l4 offset-l1 s7 news-detail">
           <img className="article-img" src={article.urlToImage} alt="article" />
           <p>{article.title}</p>
           <p>{article.author}</p>

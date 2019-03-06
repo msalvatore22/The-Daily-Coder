@@ -2,8 +2,17 @@
   font-family: 'Slabo 27px', serif;
 }
 
-.row {
+div.row {
   margin: 0;
+}
+
+.search-bar {
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+.search-btn {
+  margin-top: 20px;
 }
 
 .news-detail {
@@ -71,15 +80,6 @@
 
 .collection-item {
   border-bottom: 1px solid #E0E0E0 !important;
-}
-
-.search-bar {
-  margin-top: 5px;
-}
-
-.search-btn {
-  margin-top: 10px;
-  margin-left: 45px;
 }
 
 .character-counter {

@@ -14,8 +14,15 @@ class News extends Component {
     }
   }
   
-  componentWillMount(){
-   this.props.fetchNews();
+  componentDidMount(){
+   this.getNews() 
+ }
+
+ async getNews() {
+   await this.props.fetchNews()
+   this.setState({
+     selectedArticle: this.props.news.firstArticle
+   })
  }
  
   render(){
@@ -23,8 +30,8 @@ class News extends Component {
      <div className="row">
        <div className="col s12">
           <SearchBar />
-          <NewsDetail history={this.props.history} article={this.state.selectedArticle}/>
-          <div className="col l8 offset-l4 s4 offset-s8">
+          <NewsDetail history={this.props.history} article={this.state.selectedArticle} firstArticle={this.props.news.firstArticle} />
+          <div className="col l7 offset-l5 s4 offset-s8">
             <NewsList articles={this.props.news.articles}
               onArticleSelect={selectedArticle => this.setState({selectedArticle})}
             />

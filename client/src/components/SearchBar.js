@@ -6,8 +6,8 @@ import { searchNews } from '../actions';
 class SearchBar extends Component {
   renderField(field){
     return (
-      <div className="row">
-        <div className="input-field col l6 offset-l3 s12">
+      <div className="row search-bar">
+        <div className="input-field col l6 offset-l3 s8">
           <i className="material-icons prefix">search</i>
           <input
             id="icon_prefix" 
@@ -15,6 +15,8 @@ class SearchBar extends Component {
             {...field.input}
           />
           <label htmlFor="icon_prefix">{field.label}</label>
+        </div>
+        <div className="col l2 s2 m2">
           <button className="btn waves-effect waves-light blue-grey search-btn" type="submit">
             Search
             <i className="material-icons right">search</i>
