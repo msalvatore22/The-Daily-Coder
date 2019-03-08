@@ -133,8 +133,8 @@ class NewsDetail extends Component {
   }
 }
 
-function mapStateToProps({auth}){
-  return { auth }
+function mapStateToProps(state){
+  return state
 }
 
 export default connect(mapStateToProps, {saveArticle})(NewsDetail)

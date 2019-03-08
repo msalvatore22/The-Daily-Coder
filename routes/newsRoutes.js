@@ -12,7 +12,7 @@ module.exports = (app) => {
 
   app.post('/api/news', async (req, res) => {
     const {topic} = req.body
-
+    
     const newsData = await axios.get(`https://newsapi.org/v2/everything?q=${topic}&sortBy=popularity&apiKey=${keys.newsAPI}`)
   
     res.send(newsData.data.articles);

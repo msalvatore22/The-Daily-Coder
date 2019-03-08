@@ -27,6 +27,7 @@ export const saveArticle = (values, callback) => async dispatch => {
     callback()
   } catch(error) {
     console.error('failed to save article')
+    alert("Article Already Saved")
   }
   
 }
@@ -44,7 +45,7 @@ export const fetchSavedArticle = (id) => async dispatch => {
 }
 
 export const deleteSavedArticle = (id, callback) => async dispatch => {
-  const res = await axios.delete(`/api/articles/${id}`, id);
+  await axios.delete(`/api/articles/${id}`, id);
 
   dispatch({type: DELETE_SAVED_ARTICLE, payload: id});
   callback()

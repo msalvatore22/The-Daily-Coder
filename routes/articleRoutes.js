@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Article = mongoose.model('articles')
 
 module.exports = (app) => {
-  app.post('/api/articles', requireLogin, async (req, res) => {
+  app.post('/api/articles', requireLogin, (req, res) => {
     const { title, author, url, img_url } = req.body
     var today = new Date();
     var dd = today.getDate();
@@ -31,10 +31,10 @@ module.exports = (app) => {
       dateSaved: today
     })
 
-    await article.save((err, article) => {
+   article.save((err, article) => {
       if(err){
         console.log(err)
-        return res.status(400).send({status: 400, message: 'Article failed to save, or already saved'})
+        return res.status(403).send({status: 403, message: 'Article failed to save, or already saved'})
       }
         
       return res.status(200).send(article)
@@ -62,8 +62,8 @@ module.exports = (app) => {
     })
   })
 
-  app.delete('/api/articles/:id', requireLogin, async (req, res) => {
-    await Article.findByIdAndDelete({_id: req.params.id }, function(err, article){
+  app.delete('/api/articles/:id', requireLogin, (req, res) => {
+   Article.findByIdAndDelete({_id: req.params.id }, function(err, article){
       if(err){
         return res.status(500).send(err)
       }

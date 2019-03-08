@@ -16,10 +16,17 @@ class News extends Component {
   
   componentDidMount(){
    this.getNews() 
- }
+  }
 
  async getNews() {
    await this.props.fetchNews()
+   this.setState({
+     selectedArticle: this.props.news.firstArticle
+   })
+ }
+
+  async handleSearch(data) {
+   await this.props.searchNews(data)
    this.setState({
      selectedArticle: this.props.news.firstArticle
    })
@@ -29,7 +36,7 @@ class News extends Component {
    return (
      <div className="row">
        <div className="col s12">
-          <SearchBar />
+          <SearchBar handleSearchData={this.handleSearch.bind(this)} />
           <NewsDetail history={this.props.history} article={this.state.selectedArticle} firstArticle={this.props.news.firstArticle} />
           <div className="col l7 offset-l5 s4 offset-s8">
             <NewsList articles={this.props.news.articles}
@@ -42,7 +49,7 @@ class News extends Component {
  }
 }
 
-function mapStateToProps({ news }) {
- return { news }
+function mapStateToProps({news}) {
+ return {news}
 }
 export default connect(mapStateToProps, actions)(News)

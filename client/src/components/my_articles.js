@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { Link } from 'react-router-dom';
 
 class MyArticles extends Component {
-  componentWillMount(){
+  componentDidMount(){
     this.props.fetchSavedArticles();
   }
   

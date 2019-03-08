@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
-import { searchNews } from '../actions';
 
 class SearchBar extends Component {
   renderField(field){
@@ -27,7 +25,7 @@ class SearchBar extends Component {
   }
 
   onSubmit(values){
-    this.props.searchNews(values)
+    this.props.handleSearchData(values)
     this.props.change('topic', null)
   }
 
@@ -61,11 +59,7 @@ function validate(values){
   return errors;
 }
 
-
-
 export default reduxForm({
   validate,
   form: 'SearchBar'
-})(
-  connect(null, {searchNews})(SearchBar)
-);
+})(SearchBar);
