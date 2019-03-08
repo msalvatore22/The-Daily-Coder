@@ -8,7 +8,7 @@ div.row {
 
 .search-bar {
   margin-top: 5px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .search-btn {
@@ -17,12 +17,14 @@ div.row {
 
 .news-detail {
   position: fixed;
-  margin-top: 30px;
+  margin-top: 10px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  padding: 15px !important;
 }
 
 .article-detail {
   margin-top: 30px;
+  padding: 15px !important;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
@@ -41,11 +43,12 @@ div.row {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 0;
 }
 
 #news-list-li {
   margin: 10px;
-  padding: 10px 15px 5px 15px;
+  padding: 15px 15px 5px 15px;
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
@@ -61,11 +64,10 @@ div.row {
 .article-img {
   height: 200px;
   width: 100%;
-  margin-top: 30px;
+  
 }
 
 .article-list-img {
-  padding-top: 10px;
   height: 100px;
   width: 200px;
 }
@@ -119,13 +121,8 @@ div.row {
   }
 
   .article-list-img {
-    padding-top: 10px;
     height: 100px;
     width: 100px;
-  }
-
-  .news-detail {
-    margin-top: -30px;
   }
 
   .news-detail > p:nth-child(4) {
@@ -160,10 +157,6 @@ div.row {
 
   .news-detail > a > button > i {
     display: none;
-  }
-
-  #news-list-li:first-child {
-    margin-top: -45px;
   }
 
   #news-list-li > p {
