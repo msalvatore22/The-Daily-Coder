@@ -5,8 +5,8 @@ import * as actions from '../actions';
 
 import Header from './Header'
 import News from './News'
-import MyArticles from './my_articles'
-import MyArticlesShow from './my_articles_show'
+import Articles from './articles_list'
+import ArticlesShow from './articles_show'
 
 class App extends Component {
   componentDidMount() {
@@ -20,8 +20,8 @@ class App extends Component {
           <div>
             <Header />
             <Route exact path="/" component={News} />
-            <Route exact path="/articles" component={MyArticles} />
-            <Route path="/articles/:id" component={MyArticlesShow} />
+            <Route exact path="/articles" component={Articles} />
+            <Route path="/articles/:id" component={ArticlesShow} />
           </div>
         </BrowserRouter>
       </div>
