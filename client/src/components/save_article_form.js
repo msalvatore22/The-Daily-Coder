@@ -94,7 +94,7 @@ class SaveArticleForm extends Component {
                 <i className="material-icons right">bookmark</i>
               </button> 
               :
-              <button className="btn btn-small blue-grey save-btn right disabled" type="submit">
+              <button className="btn btn-small blue-grey right disabled" type="submit">
                 Saved
                 <i className="material-icons right">check_box</i>
               </button> 

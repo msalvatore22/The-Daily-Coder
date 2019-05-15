@@ -12,9 +12,11 @@ const NewsList = (props) => {
     
   });
    return (
-    <ul className="news-list">
-      {articles}
-    </ul>
+     <div className="container">
+      <ul className="news-list">
+        {articles}
+      </ul>
+    </div>
   )
 }
  export default NewsList;

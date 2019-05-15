@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import SaveArticleForm from './save_article_form'
 import M from "materialize-css";
-import "materialize-css/dist/css/materialize.min.css";
 
 class Modal extends Component {
   componentDidMount() {
@@ -45,6 +44,9 @@ class Modal extends Component {
             className="modal"
           >
             <div className="modal-content">
+              <a className="modal-close red btn-flat right">
+                X
+              </a>
               <img className="article-img" src={selectedArticle.urlToImage} alt="article" />
               <h4>{selectedArticle.title}</h4>
               <p>{selectedArticle.title}</p>
@@ -59,9 +61,6 @@ class Modal extends Component {
               </button>
             </a>
             <SaveArticleForm selectedArticle={selectedArticle} />
-              <a className="modal-close red btn-flat right">
-                Close
-              </a>
             </div>
           </div>
         </div>
