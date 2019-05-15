@@ -6,6 +6,10 @@ class SaveArticleForm extends Component {
   constructor(props){
     super(props)
 
+    this.state = {
+      saved: false
+    }
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.title = React.createRef()
     this.author = React.createRef()
@@ -13,7 +17,7 @@ class SaveArticleForm extends Component {
     this.img_url = React.createRef()
   }
 
-  handleSubmit(event){
+  async handleSubmit(event){
     event.preventDefault()
     let title = this.title.current.value
     let author = this.author.current.value
@@ -27,16 +31,18 @@ class SaveArticleForm extends Component {
       img_url
     }
     
-    this.props.saveArticle(values)
-    
+    await this.props.saveArticle(values)
+    this.setState(prevState => ({
+      saved: !prevState.saved
+    }))
   }
 
   render(){
     const selectedArticle = this.props.selectedArticle
+    const saved = this.state.saved
     if(!selectedArticle){
       return( 
-        <div>
-          <h4>Loading...</h4>
+        <div className="news-detail-form">
         </div>
       )
     } else {
@@ -83,10 +89,16 @@ class SaveArticleForm extends Component {
                 ref={this.img_url}
                 component='input'
               />
-              <button className="btn btn-small waves-effect waves-light blue-grey save-btn right" type="submit">
+              {!saved ? <button className="btn btn-small waves-effect waves-light blue-grey save-btn right" type="submit">
                 Bookmark
                 <i className="material-icons right">bookmark</i>
-              </button>
+              </button> 
+              :
+              <button className="btn btn-small blue-grey save-btn right disabled" type="submit">
+                Saved
+                <i className="material-icons right">check_box</i>
+              </button> 
+              }
             </form>
           </div>
       )
