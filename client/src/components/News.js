@@ -41,6 +41,7 @@ class News extends Component {
           <div className="col l7 offset-l5 s4 offset-s8">
             <NewsList articles={this.props.news.articles}
               onArticleSelect={selectedArticle => this.setState({selectedArticle})}
+              selectedArticle={this.state.selectedArticle}
             />
           </div>
         </div>

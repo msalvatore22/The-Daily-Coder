@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { saveArticle } from "../actions";
 
-class NewsDetail extends Component { 
+class SaveArticleForm extends Component { 
   constructor(props){
     super(props)
 
@@ -27,34 +27,20 @@ class NewsDetail extends Component {
       img_url
     }
     
-    this.props.saveArticle(values, () => {
-      this.props.history.push('/articles')
-      console.log("article saved")
-    })
+    this.props.saveArticle(values)
     
   }
 
   render(){
-    const article = this.props.article
-    if(!article){
+    const selectedArticle = this.props.selectedArticle
+    if(!selectedArticle){
       return( 
-        <div style={{textAlign: 'center'}} className="col l4 offset-l1 s7 news-detail">
+        <div>
           <h4>Loading...</h4>
         </div>
       )
     } else {
       return(
-        <div className="col l4 offset-l1 s7 news-detail">
-          <img className="article-img" src={article.urlToImage} alt="article" />
-          <p>{article.title}</p>
-          <p>{article.author}</p>
-          <p>{article.description}</p>
-          <a target="_blank" href={article.url}>
-            <button className="btn btn-small waves-effect waves-light blue-grey delete-btn left">
-              Full Article
-              <i className="material-icons right">explore</i>
-            </button>
-          </a>
         <div>
             <form className="news-detail-form" onSubmit={this.handleSubmit}>
               <input
@@ -63,7 +49,7 @@ class NewsDetail extends Component {
                 label="title"
                 name="title"
                 type="text"
-                value={article.title}
+                value={selectedArticle.title}
                 ref={this.title}
                 component='input'
               />
@@ -73,7 +59,7 @@ class NewsDetail extends Component {
                 label="author"
                 name="author"
                 type="text"
-                value={article.author}
+                value={selectedArticle.author}
                 ref={this.author}
                 component='input'
               />
@@ -83,7 +69,7 @@ class NewsDetail extends Component {
                 label="url"
                 name="url"
                 type="text"
-                value={article.url}
+                value={selectedArticle.url}
                 ref={this.url}
                 component='input'
               />
@@ -93,7 +79,7 @@ class NewsDetail extends Component {
                 label="img_url"
                 name="img_url"
                 type="text"
-                value={article.urlToImage}
+                value={selectedArticle.urlToImage}
                 ref={this.img_url}
                 component='input'
               />
@@ -103,15 +89,12 @@ class NewsDetail extends Component {
               </button>
             </form>
           </div>
-        </div>
       )
     }
     
   }
 }
 
-function mapStateToProps(state){
-  return state
-}
 
-export default connect(mapStateToProps, {saveArticle})(NewsDetail)
+
+export default connect(null, {saveArticle})(SaveArticleForm)

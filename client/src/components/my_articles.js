@@ -15,7 +15,7 @@ class MyArticles extends Component {
     } else {
       return _.map(this.props.articles, article => {
         return (
-          <li key={article._id} className="collection-item avatar">
+          <li key={article.title} className="collection-item avatar">
             <img src={article.img_url} className="circle" alt="article"></img>
             <span className="title">
               {article.title}

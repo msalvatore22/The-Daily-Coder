@@ -20,14 +20,14 @@ export const searchNews = (values) => async dispatch => {
   dispatch({ type: SEARCH_NEWS, payload: res.data})
 }
 
-export const saveArticle = (values, callback) => async dispatch => {
+export const saveArticle = (values) => async dispatch => {
   try {
     const res = await axios.post('/api/articles', values);
     dispatch({ type: SAVE_ARTICLE, payload: res.data})
-    callback()
+    console.log('saved article')
   } catch(error) {
     console.error('failed to save article')
-    alert("Article Already Saved")
+    console.log(error)
   }
   
 }
