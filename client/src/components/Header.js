@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import M from "materialize-css/dist/js/materialize.min.js";
+import NavSearchBar from './NavSearchBar'
 
 class Header extends Component {
   componentDidMount(){
@@ -44,12 +45,17 @@ class Header extends Component {
             <a data-target="mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
             
             <ul className="right hide-on-med-and-down">
-              {this.renderContent()}
+              
+              {this.renderContent()} 
+            </ul>
+            <ul className="hide-on-med-and-down">
+              <NavSearchBar handleSearchData = {this.props.handleSearchData} />
             </ul>
           </div>
         </nav>
         <ul className="sidenav" id="mobile">
           {this.renderContent()}
+          <NavSearchBar handleSearchData = {this.props.handleSearchData} />
         </ul>
      </div>
     );

@@ -45,7 +45,7 @@ class Modal extends Component {
           >
             <div className="modal-content">
               <a id="modal-close-btn" className="modal-close btn btn-small red right">
-                <i class="material-icons">close</i>
+                <i className="material-icons">close</i>
               </a>
               <img className="article-img" src={selectedArticle.urlToImage} alt="article" />
               <h4>{selectedArticle.title}</h4>

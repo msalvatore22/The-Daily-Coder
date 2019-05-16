@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from "../actions";
 import SearchBar from './SearchBar'
 import NewsList from './news_list'
+import Header from './Header'
 
 class News extends Component {
   constructor(props){
@@ -34,6 +35,7 @@ class News extends Component {
   render(){
    return (
      <div className="row">
+      <Header handleSearchData={this.handleSearch.bind(this)}/>
        <div className="col s12">
           <SearchBar handleSearchData={this.handleSearch.bind(this)} />
           <NewsList articles={this.props.news.articles}

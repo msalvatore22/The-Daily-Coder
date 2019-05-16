@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import "materialize-css/dist/css/materialize.min.css";
 
-import Header from './Header'
+
 import News from './News'
 import MyArticles from './my_articles'
 import MyArticlesShow from './my_articles_show'
@@ -19,7 +19,6 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
-            <Header />
             <Route exact path="/" component={News} />
             <Route exact path="/articles" component={MyArticles} />
             <Route path="/articles/:id" component={MyArticlesShow} />
