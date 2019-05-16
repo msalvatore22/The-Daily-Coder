@@ -89,12 +89,12 @@ class SaveArticleForm extends Component {
                 ref={this.img_url}
                 component='input'
               />
-              {!saved ? <button className="btn btn-small waves-effect waves-light blue-grey save-btn right" type="submit">
+              {!saved ? <button id="bookmark-btn" className="btn btn-small waves-effect waves-light blue-grey left" type="submit">
                 Bookmark
                 <i className="material-icons right">bookmark</i>
               </button> 
               :
-              <button className="btn btn-small blue-grey right disabled" type="submit">
+              <button id="bookmark-btn" className="btn btn-small blue-grey left disabled" type="submit">
                 Saved
                 <i className="material-icons right">check_box</i>
               </button> 

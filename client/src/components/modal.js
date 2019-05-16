@@ -44,8 +44,8 @@ class Modal extends Component {
             className="modal"
           >
             <div className="modal-content">
-              <a className="modal-close red btn-flat right">
-                X
+              <a id="modal-close-btn" className="modal-close btn btn-small red right">
+                <i class="material-icons">close</i>
               </a>
               <img className="article-img" src={selectedArticle.urlToImage} alt="article" />
               <h4>{selectedArticle.title}</h4>
@@ -55,7 +55,7 @@ class Modal extends Component {
             </div>
             <div className="modal-footer">
             <a target="_blank" href={selectedArticle.url}>
-              <button className="btn btn-small waves-effect waves-light blue-grey delete-btn left">
+              <button id="url-btn" className="btn btn-small waves-effect waves-light blue-grey left">
               Full Article
               <i className="material-icons right">explore</i>
               </button>
