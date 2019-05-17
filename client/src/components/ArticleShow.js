@@ -31,7 +31,7 @@ class ArticlesShow extends Component {
     }
     return (
       <div className="row">
-        <div className="article-detail col l4 offset-l4">
+        <div className="article-detail col l4 offset-l2 m6 offset-m3">
           <img className="article-img" src={articles.img_url} alt="article"  />
           <h5>{articles.title}</h5>
           <p>{articles.author}</p>
