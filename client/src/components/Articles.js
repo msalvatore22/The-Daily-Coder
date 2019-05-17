@@ -4,7 +4,7 @@ import { fetchSavedArticles } from "../actions";
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
 
-class MyArticles extends Component {
+class Articles extends Component {
   componentDidMount(){
     this.props.fetchSavedArticles();
   }
@@ -55,4 +55,4 @@ function mapStateToProps({articles, auth}){
   return { articles, auth }
 }
 
-export default connect(mapStateToProps, {fetchSavedArticles})(MyArticles)
+export default connect(mapStateToProps, {fetchSavedArticles})(Articles)

@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as actions from "../actions";
 import M from "materialize-css/dist/js/materialize.min.js";
 import NavSearchBar from './NavSearchBar'
 
-class Header extends Component {
+class NavBar extends Component {
   componentDidMount(){
     var elem = document.querySelector(".sidenav");
     M.Sidenav.init(elem, {
         edge: "right",
         inDuration: 250
       });
+  }
+
+  async handleSearch(data) {
+    await this.props.searchNews(data)
+    this.props.history.push({
+      pathname: '/'
+    })
   }
   
   renderContent(){
@@ -45,17 +53,15 @@ class Header extends Component {
             <a data-target="mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
             
             <ul className="right hide-on-med-and-down">
-              
               {this.renderContent()} 
             </ul>
             <ul className="hide-on-med-and-down">
-              <NavSearchBar handleSearchData = {this.props.handleSearchData} />
+              <NavSearchBar handleSearchData={this.handleSearch.bind(this)} />
             </ul>
           </div>
         </nav>
         <ul className="sidenav" id="mobile">
           {this.renderContent()}
-          <NavSearchBar handleSearchData = {this.props.handleSearchData} />
         </ul>
      </div>
     );
@@ -66,4 +72,4 @@ function mapStateToProps({ auth }) {
   return { auth }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, actions)(NavBar);

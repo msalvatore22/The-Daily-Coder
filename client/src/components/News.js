@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from "../actions";
 import SearchBar from './SearchBar'
 import NewsList from './news_list'
-import Header from './Header'
+import Header from './NavBar'
 
 class News extends Component {
   constructor(props){
@@ -12,33 +12,20 @@ class News extends Component {
     this.state = {
       selectedArticle: null
     }
-  }
-  
-  componentDidMount(){
-   this.getNews() 
+    
   }
 
- async getNews() {
-   await this.props.fetchNews()
-   this.setState({
-     selectedArticle: this.props.news.firstArticle
-   })
- }
-
-  async handleSearch(data) {
-   await this.props.searchNews(data)
-   this.setState({
-     selectedArticle: this.props.news.firstArticle
-   })
+  handleSearch(data) {
+   this.props.searchNews(data)
  }
  
   render(){
    return (
      <div className="row">
-      <Header handleSearchData={this.handleSearch.bind(this)}/>
        <div className="col s12">
           <SearchBar handleSearchData={this.handleSearch.bind(this)} />
-          <NewsList articles={this.props.news.articles}
+          <NewsList 
+            articles={this.props.news.articles}
             onArticleSelect={selectedArticle => this.setState({selectedArticle})}
             selectedArticle={this.state.selectedArticle}
           />

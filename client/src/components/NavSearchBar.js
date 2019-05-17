@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 class NavSearchBar extends Component {
   renderField(field){
     return (
-      <input id="search" type="search" {...field.input} required></input>
+      <input id="search" type="search" placeholder="SEARCH NEWS" {...field.input} required></input>
     )
   }
   
@@ -19,7 +19,7 @@ class NavSearchBar extends Component {
     return (
       <li>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <div class="input-field left">
+          <div className="input-field left">
             <Field 
               label="Search Topics"
               name="topic"

@@ -1,13 +1,11 @@
-import React, { Component } from "react";
-import Modal from './modal'
+import React from "react";
+import Modal from './Modal'
 
 
-class NewsListItem extends Component { 
-
-  render(){
-    const onArticleSelect = this.props.onArticleSelect
-    const article = this.props.article
-    const selectedArticle = this.props.selectedArticle
+const NewsListItem = (props) => { 
+    const onArticleSelect = props.onArticleSelect
+    const article = props.article
+    const selectedArticle = props.selectedArticle
     return (
       <div>
         <div onClick={() => onArticleSelect(article)} className="modal-trigger row news-list-li" data-target="modal1">
@@ -19,7 +17,6 @@ class NewsListItem extends Component {
         
       </div>
     )
-  }
 }
 
 export default NewsListItem;

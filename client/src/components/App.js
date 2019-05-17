@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import "materialize-css/dist/css/materialize.min.css";
 
-
+import NavBar from './NavBar'
 import News from './News'
-import MyArticles from './my_articles'
-import MyArticlesShow from './my_articles_show'
+import MyArticles from './Articles'
+import MyArticlesShow from './ArticleShow'
 
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
+    this.props.fetchNews();
   }
   
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
+            <Route path="*" component={NavBar} />
             <Route exact path="/" component={News} />
             <Route exact path="/articles" component={MyArticles} />
             <Route path="/articles/:id" component={MyArticlesShow} />
