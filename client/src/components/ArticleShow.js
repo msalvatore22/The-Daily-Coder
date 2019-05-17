@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchSavedArticle, deleteSavedArticle } from '../actions';
 import { Link } from 'react-router-dom';
 
-class MyArticlesShow extends Component {
+class ArticlesShow extends Component {
   componentDidMount(){
     const { id } = this.props.match.params;
     this.props.fetchSavedArticle(id);
@@ -64,4 +64,4 @@ function mapStateToProps({articles, auth}){
   return {articles, auth}
 }
 
-export default connect(mapStateToProps, {fetchSavedArticle, deleteSavedArticle})(MyArticlesShow)
+export default connect(mapStateToProps, {fetchSavedArticle, deleteSavedArticle})(ArticlesShow)

@@ -4,8 +4,8 @@ import { Field, reduxForm } from 'redux-form';
 class SearchBar extends Component {
   renderField(field){
     return (
-      <div className="row search-bar">
-        <div className="input-field col l6 offset-l3 s8">
+      <div className="row search-bar hide-on-large-only">
+        <div className="input-field col m8 offset-m1 s8">
           <i className="material-icons prefix">search</i>
           <input
             id="icon_prefix" 

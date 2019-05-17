@@ -7,13 +7,16 @@ const NewsList = (props) => {
     onArticleSelect={props.onArticleSelect}
     key={article.title}
     article={article}
+    selectedArticle={props.selectedArticle}
     />
     
   });
    return (
-    <ul className="news-list">
-      {articles}
-    </ul>
+     <div className="container">
+      <ul className="news-list">
+        {articles}
+      </ul>
+    </div>
   )
 }
  export default NewsList;

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from "../actions";
 import SearchBar from './SearchBar'
 import NewsList from './news_list'
-import NewsDetail from './news_detail'
+import Header from './NavBar'
 
 class News extends Component {
   constructor(props){
@@ -12,24 +12,11 @@ class News extends Component {
     this.state = {
       selectedArticle: null
     }
-  }
-  
-  componentDidMount(){
-   this.getNews() 
+    
   }
 
- async getNews() {
-   await this.props.fetchNews()
-   this.setState({
-     selectedArticle: this.props.news.firstArticle
-   })
- }
-
-  async handleSearch(data) {
-   await this.props.searchNews(data)
-   this.setState({
-     selectedArticle: this.props.news.firstArticle
-   })
+  handleSearch(data) {
+   this.props.searchNews(data)
  }
  
   render(){
@@ -37,12 +24,11 @@ class News extends Component {
      <div className="row">
        <div className="col s12">
           <SearchBar handleSearchData={this.handleSearch.bind(this)} />
-          <NewsDetail history={this.props.history} article={this.state.selectedArticle} firstArticle={this.props.news.firstArticle} />
-          <div className="col l7 offset-l5 s4 offset-s8">
-            <NewsList articles={this.props.news.articles}
-              onArticleSelect={selectedArticle => this.setState({selectedArticle})}
-            />
-          </div>
+          <NewsList 
+            articles={this.props.news.articles}
+            onArticleSelect={selectedArticle => this.setState({selectedArticle})}
+            selectedArticle={this.state.selectedArticle}
+          />
         </div>
      </div> 
    )

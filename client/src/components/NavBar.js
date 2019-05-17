@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as actions from "../actions";
 import M from "materialize-css/dist/js/materialize.min.js";
+import NavSearchBar from './NavSearchBar'
 
-class Header extends Component {
+class NavBar extends Component {
   componentDidMount(){
     var elem = document.querySelector(".sidenav");
     M.Sidenav.init(elem, {
         edge: "right",
         inDuration: 250
       });
+  }
+
+  async handleSearch(data) {
+    await this.props.searchNews(data)
+    this.props.history.push({
+      pathname: '/'
+    })
   }
   
   renderContent(){
@@ -18,13 +27,13 @@ class Header extends Component {
         return;
       case false:
         return (
-          <li><a href="/auth/google"><i className="material-icons">input</i></a></li>
+          <li><a href="/auth/google"><i className="material-icons right">input</i>LOGIN</a></li>
         )
       default:
       return (
         <div>
-          <li><Link to={'/articles'} ><i className="material-icons">collections_bookmark</i></Link></li>
-          <li><a href="/api/logout"><i className="material-icons">power_settings_new</i></a></li>
+          <li><Link to={'/articles'} ><i className="material-icons right">collections_bookmark</i>BOOKMARKS</Link></li>
+          <li><a href="/api/logout"><i className="material-icons right">power_settings_new</i>LOGOUT</a></li>
         </div>
       )
     }
@@ -44,7 +53,10 @@ class Header extends Component {
             <a data-target="mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
             
             <ul className="right hide-on-med-and-down">
-              {this.renderContent()}
+              {this.renderContent()} 
+            </ul>
+            <ul className="hide-on-med-and-down">
+              <NavSearchBar handleSearchData={this.handleSearch.bind(this)} />
             </ul>
           </div>
         </nav>
@@ -60,4 +72,4 @@ function mapStateToProps({ auth }) {
   return { auth }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, actions)(NavBar);
