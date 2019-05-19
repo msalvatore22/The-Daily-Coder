@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SaveArticleForm from './save_article_form'
 import M from "materialize-css";
+import { connect } from 'react-redux'
 
 class Modal extends Component {
   componentDidMount() {
@@ -60,7 +61,16 @@ class Modal extends Component {
               <i className="material-icons right">explore</i>
               </button>
             </a>
-            <SaveArticleForm selectedArticle={selectedArticle} />
+            {!this.props.auth ? 
+              <a href="/auth/google">
+              <button className="btn btn-small waves-effect waves-light blue-grey save-btn right">
+                Login to bookmark
+                <i className="material-icons right">input</i>
+              </button>
+              </a>
+              :
+              <SaveArticleForm selectedArticle={selectedArticle} />
+            }
             </div>
           </div>
         </div>
@@ -69,4 +79,8 @@ class Modal extends Component {
   }
 }
 
-export default Modal;
+function mapStateToProps({auth}){
+  return {auth}
+}
+
+export default connect(mapStateToProps, null)(Modal);
