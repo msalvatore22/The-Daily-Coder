@@ -6,21 +6,6 @@ const Article = mongoose.model('articles')
 module.exports = (app) => {
   app.post('/api/articles', requireLogin, (req, res) => {
     const { title, author, url, img_url } = req.body
-    var today = new Date();
-    var dd = today.getDate();
-    
-    var mm = today.getMonth()+1; 
-    var yyyy = today.getFullYear();
-    if(dd<10) 
-    {
-        dd='0'+dd;
-    } 
-    
-    if(mm<10) 
-    {
-        mm='0'+mm;
-    } 
-    today = mm+'-'+dd+'-'+yyyy;
 
     const article = new Article({
       title,
@@ -28,7 +13,7 @@ module.exports = (app) => {
       url,
       img_url,
       _user: req.user.id,
-      dateSaved: today
+      dateSaved: Date.now()
     })
 
    article.save((err, article) => {

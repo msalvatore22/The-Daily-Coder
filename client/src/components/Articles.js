@@ -21,7 +21,7 @@ class Articles extends Component {
               {article.title}
             </span>
             <p>{article.author}</p>
-            <p>Saved on {article.dateSaved}</p>
+            <p>Bookmarked on {new Date(article.dateSaved).toLocaleDateString()}</p>
             <a target="_blank" href={article.url}>
               <button className="btn waves-effect waves-light blue-grey btn-small delete-btn">
                   Full Article
