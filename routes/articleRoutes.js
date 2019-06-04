@@ -4,27 +4,20 @@ const mongoose = require('mongoose');
 const Article = mongoose.model('articles')
 
 module.exports = (app) => {
-  app.post('/api/articles', requireLogin, (req, res) => {
-    const { title, author, url, img_url } = req.body
+  app.post('/api/articles', requireLogin, async (req, res) => {
 
     const article = new Article({
-      title,
-      author,
-      url,
-      img_url,
+      ...req.body,
       _user: req.user.id,
       dateSaved: Date.now()
     })
 
-   article.save((err, article) => {
-      if(err){
-        console.log(err)
-        return res.status(403).send({status: 403, message: 'Article failed to save, or already saved'})
-      }
-        
-      return res.status(200).send(article)
-      
-    })
+    try {
+      await article.save()
+      res.status(201).send(article)
+    } catch (e) {
+      res.status(400).send({e, message: 'Article failed to save'})
+    }
 
   });
 
