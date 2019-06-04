@@ -8,7 +8,7 @@ module.exports = (app) => {
 
     const article = new Article({
       ...req.body,
-      _user: req.user.id,
+      _user: req.user._id,
       dateSaved: Date.now()
     })
 
@@ -23,33 +23,42 @@ module.exports = (app) => {
 
   app.get('/api/articles', requireLogin, async (req, res) => {
     try {
-      const articles = await Article.find({ _user: req.user.id })
+      const articles = await Article.find({ _user: req.user._id })
       res.send(articles)
     } catch (e) {
       res.status(500).send(e)
     }
   })
 
-  app.get('/api/articles/:id', requireLogin, (req, res) => {
-    Article.findById(req.params.id).then((article, err) => {
-      if(err){
-        return res.status(500).send(err)
+  app.get('/api/articles/:id', requireLogin, async (req, res) => {
+    const _id = req.params.id
+
+    try {
+      const article = await Article.findOne({ _id, _user: req.user._id})
+
+      if(!article){
+        return res.status(404).send()
       }
-      return res.status(200).send(article)
-    })
+
+      res.send(article)
+    } catch (e) {
+      res.status(500).send()
+    }
   })
 
-  app.delete('/api/articles/:id', requireLogin, (req, res) => {
-   Article.findByIdAndDelete({_id: req.params.id }, function(err, article){
-      if(err){
-        return res.status(500).send(err)
-      }
-      const response = {
-        message: 'Article successfully deleted'
+  app.delete('/api/articles/:id', requireLogin, async (req, res) => {
+    const _id = req.params.id
+    
+    try {
+      const article = await Article.findOneAndDelete({_id, _user: req.user._id})
+      
+      if(!article){
+        return res.status(404).send()
       }
 
-      return res.status(200).send(response)
-    })
+      res.send(article)
+    } catch (e) {
+      rest.status(500).send()
+    }
   })
-
 };
