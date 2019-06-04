@@ -21,14 +21,13 @@ module.exports = (app) => {
 
   });
 
-  app.get('/api/articles', requireLogin, (req, res) => {
-    Article.find({_user: req.user.id}).then(function (articles, err){
-      if(err) {
-        return res.status(500).send(err)
-      }
-      
-      return res.status(200).send(articles)
-    })
+  app.get('/api/articles', requireLogin, async (req, res) => {
+    try {
+      const articles = await Article.find({ _user: req.user.id })
+      res.send(articles)
+    } catch (e) {
+      res.status(500).send(e)
+    }
   })
 
   app.get('/api/articles/:id', requireLogin, (req, res) => {
