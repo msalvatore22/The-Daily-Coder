@@ -4,60 +4,61 @@ const mongoose = require('mongoose');
 const Article = mongoose.model('articles')
 
 module.exports = (app) => {
-  app.post('/api/articles', requireLogin, (req, res) => {
-    const { title, author, url, img_url } = req.body
+  app.post('/api/articles', requireLogin, async (req, res) => {
 
     const article = new Article({
-      title,
-      author,
-      url,
-      img_url,
-      _user: req.user.id,
+      ...req.body,
+      _user: req.user._id,
       dateSaved: Date.now()
     })
 
-   article.save((err, article) => {
-      if(err){
-        console.log(err)
-        return res.status(403).send({status: 403, message: 'Article failed to save, or already saved'})
-      }
-        
-      return res.status(200).send(article)
-      
-    })
+    try {
+      await article.save()
+      res.status(201).send(article)
+    } catch (e) {
+      res.status(400).send({e, message: 'Article failed to save'})
+    }
 
   });
 
-  app.get('/api/articles', requireLogin, (req, res) => {
-    Article.find({_user: req.user.id}).then(function (articles, err){
-      if(err) {
-        return res.status(500).send(err)
+  app.get('/api/articles', requireLogin, async (req, res) => {
+    try {
+      const articles = await Article.find({ _user: req.user._id })
+      res.send(articles)
+    } catch (e) {
+      res.status(500).send(e)
+    }
+  })
+
+  app.get('/api/articles/:id', requireLogin, async (req, res) => {
+    const _id = req.params.id
+
+    try {
+      const article = await Article.findOne({ _id, _user: req.user._id})
+
+      if(!article){
+        return res.status(404).send()
       }
+
+      res.send(article)
+    } catch (e) {
+      res.status(500).send()
+    }
+  })
+
+  app.delete('/api/articles/:id', requireLogin, async (req, res) => {
+    const _id = req.params.id
+    
+    try {
+      const article = await Article.findOneAndDelete({_id, _user: req.user._id})
       
-      return res.status(200).send(articles)
-    })
-  })
-
-  app.get('/api/articles/:id', requireLogin, (req, res) => {
-    Article.findById(req.params.id).then((article, err) => {
-      if(err){
-        return res.status(500).send(err)
-      }
-      return res.status(200).send(article)
-    })
-  })
-
-  app.delete('/api/articles/:id', requireLogin, (req, res) => {
-   Article.findByIdAndDelete({_id: req.params.id }, function(err, article){
-      if(err){
-        return res.status(500).send(err)
-      }
-      const response = {
-        message: 'Article successfully deleted'
+      if(!article){
+        return res.status(404).send()
       }
 
-      return res.status(200).send(response)
-    })
+      res.send(article)
+    } catch (e) {
+      rest.status(500).send()
+    }
   })
-
 };
