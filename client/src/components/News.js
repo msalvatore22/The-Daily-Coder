@@ -20,10 +20,12 @@ class News extends Component {
  }
  
   render(){
+    console.log(this.props.news.topic.topic)
    return (
      <div className="row">
        <div className="col s12">
           <SearchBar handleSearchData={this.handleSearch.bind(this)} />
+          <h4>{!this.props.news.topic.topic ? '' : 'Results for ' +'"' + this.props.news.topic.topic + '"'}</h4>
           <NewsList 
             articles={this.props.news.articles}
             onArticleSelect={selectedArticle => this.setState({selectedArticle})}
@@ -36,6 +38,6 @@ class News extends Component {
 }
 
 function mapStateToProps({news}) {
- return {news}
+  return {news}
 }
 export default connect(mapStateToProps, actions)(News)
