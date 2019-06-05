@@ -1,5 +1,4 @@
 const keys = require('../config/keys');
-const requireLogin = require('../middlewares/requireLogin');
 const axios = require('axios');
 
 module.exports = (app) => {
@@ -11,12 +10,22 @@ module.exports = (app) => {
   })
 
   app.post('/api/news', async (req, res) => {
-    const {topic} = req.body
+    const {topic, page} = req.body
 
-    const newsData = await axios.get(`https://newsapi.org/v2/everything?q=${topic}&sources=ars-technica,business-insider,engadget,ign,mashable,new-scientist,next-big-future,recode,techcrunch,techradar,the-next-web,the-verge,wired&language=en&apiKey=${keys.newsAPI}`)
+    console.log(topic)
+    console.log(page)
+
+    const newsData = await axios.get(`https://newsapi.org/v2/everything?q=${topic}&sources=ars-technica,business-insider,engadget,ign,mashable,new-scientist,next-big-future,recode,techcrunch,techradar,the-next-web,the-verge,wired&language=en&apiKey=${keys.newsAPI}&page=${page}`)
     
-    console.log(newsData.data.totalResults)
-    res.send(newsData.data.articles);
+    let pages
+    const total = newsData.data.totalResults
+    if(total > 100){
+      pages = 5
+    } else {
+      pages = Math.ceil(total / 20)
+    }
+    
+    res.send({articles: newsData.data.articles, pages: pages});
     
   })
 

@@ -3,7 +3,8 @@ import { FETCH_NEWS, SEARCH_NEWS } from '../actions/types';
 
  const initialState = {
    articles: [],
-   topic: []
+   topic: [],
+   pages: 0
  }
 
 export default function(state = initialState, action) {
@@ -15,7 +16,8 @@ export default function(state = initialState, action) {
     case SEARCH_NEWS:
       return Object.assign({}, state, {
         articles: action.payload,
-        topic: action.values
+        topic: action.values,
+        pages: action.pages
       })
     default:
       return state;

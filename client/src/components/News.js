@@ -17,10 +17,23 @@ class News extends Component {
 
   handleSearch(data) {
    this.props.searchNews(data)
+   console.log(data)
  }
+
+  renderPageButtons(){
+    let buttons = []
+    let topic = this.props.news.topic.topic
+    let pages = this.props.news.pages
+    for(let i = 0; i < pages; i++){
+      let data = { topic: topic, page: i+1}
+      buttons.push(
+        <button onClick={() => this.handleSearch(data)} key={i+1}>{i+1}</button>
+      )
+    } 
+    return buttons
+  }
  
   render(){
-    console.log(this.props.news.topic.topic)
    return (
      <div className="row">
        <div className="col s12">
@@ -31,6 +44,7 @@ class News extends Component {
             onArticleSelect={selectedArticle => this.setState({selectedArticle})}
             selectedArticle={this.state.selectedArticle}
           />
+          {this.renderPageButtons()}
         </div>
      </div> 
    )
