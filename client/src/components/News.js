@@ -10,28 +10,36 @@ class News extends Component {
     super(props)
     
     this.state = {
-      selectedArticle: null
+      selectedArticle: null,
+      activePage: 1
     }
-    
+
   }
 
   
 
   handleSearch(data) {
    this.props.searchNews(data)
+   this.setState({
+     activePage: data.page
+   })
  }
 
   renderPageButtons(){
-    let buttons = []
     let topic = this.props.news.topic.topic
     let pages = this.props.news.pages
-    for(let i = 0; i < pages; i++){
-      let data = { topic: topic, page: i+1}
-      buttons.push(
-        <button style={{margin: '10px'}} className="btn btn-small waves-effect waves-light blue-grey" onClick={() => this.handleSearch(data)} key={i+1}>{i+1}</button>
-      )
-    } 
-    return buttons
+    let pagesArray = Array.from(Array(pages), (x, index) => index + 1)
+
+    let pageButtons = pagesArray.map(btn => {
+      let data = { topic: topic, page: btn}
+      if(this.state.activePage === btn){
+        return <li className="active blue-grey" onClick={() => this.handleSearch(data)} key={btn}><a href="#!">{btn}</a></li>
+      } else {
+        return <li className="waves-effect" onClick={() => this.handleSearch(data)} key={btn}><a href="#!">{btn}</a></li>
+      }
+    })
+    
+    return pageButtons
   }
  
   render(){
@@ -49,7 +57,9 @@ class News extends Component {
           /> 
         </div>
         <div style={{textAlign: 'center'}} className="col s12">
+          <ul className="pagination">
             {this.renderPageButtons()}
+          </ul> 
         </div>
      </div> 
    )
