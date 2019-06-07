@@ -12,9 +12,6 @@ module.exports = (app) => {
   app.post('/api/news', async (req, res) => {
     const {topic, page} = req.body
 
-    console.log(topic)
-    console.log(page)
-
     const newsData = await axios.get(`https://newsapi.org/v2/everything?q=${topic}&sources=ars-technica,business-insider,engadget,ign,mashable,new-scientist,next-big-future,recode,techcrunch,techradar,the-next-web,the-verge,wired&language=en&apiKey=${keys.newsAPI}&page=${page}`)
     
     let pages

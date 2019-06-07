@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as actions from "../actions";
-import M from "materialize-css/dist/js/materialize.min.js";
+import M from "materialize-css";
 import NavSearchBar from './NavSearchBar'
 
 class NavBar extends Component {

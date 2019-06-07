@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ReactDom from 'react-dom';
 import * as actions from "../actions";
 import SearchBar from './SearchBar'
 import NewsList from './news_list'
-import Header from './NavBar'
 
 class News extends Component {
   constructor(props){
@@ -15,9 +15,10 @@ class News extends Component {
     
   }
 
+  
+
   handleSearch(data) {
    this.props.searchNews(data)
-   console.log(data)
  }
 
   renderPageButtons(){
@@ -27,24 +28,27 @@ class News extends Component {
     for(let i = 0; i < pages; i++){
       let data = { topic: topic, page: i+1}
       buttons.push(
-        <button onClick={() => this.handleSearch(data)} key={i+1}>{i+1}</button>
+        <button style={{margin: '10px'}} className="btn btn-small waves-effect waves-light blue-grey" onClick={() => this.handleSearch(data)} key={i+1}>{i+1}</button>
       )
     } 
     return buttons
   }
  
   render(){
+    let topic = this.props.news.topic.topic
    return (
      <div className="row">
        <div className="col s12">
           <SearchBar handleSearchData={this.handleSearch.bind(this)} />
-          <h4>{!this.props.news.topic.topic ? '' : 'Results for ' +'"' + this.props.news.topic.topic + '"'}</h4>
+          <h4>{!topic ? '' : 'Results for ' +'"' + topic + '"'}</h4>
           <NewsList 
             articles={this.props.news.articles}
             onArticleSelect={selectedArticle => this.setState({selectedArticle})}
             selectedArticle={this.state.selectedArticle}
-          />
-          {this.renderPageButtons()}
+          /> 
+        </div>
+        <div style={{textAlign: 'center'}} className="col s12">
+            {this.renderPageButtons()}
         </div>
      </div> 
    )
