@@ -17,7 +17,7 @@ export const fetchNews = () => async dispatch => {
 export const searchNews = (values) => async dispatch => {
   const res = await axios.post('/api/news', values);
   
-  dispatch({ type: SEARCH_NEWS, payload: res.data.articles, values: values, pages: res.data.pages})
+  dispatch({ type: SEARCH_NEWS, payload: res.data.articles, values: values, pages: res.data.pages, total: res.data.total})
 }
 
 export const saveArticle = (values) => async dispatch => {
