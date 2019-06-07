@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactDom from 'react-dom';
 import * as actions from "../actions";
 import SearchBar from './SearchBar'
 import NewsList from './news_list'
@@ -16,7 +15,9 @@ class News extends Component {
 
   }
 
-  
+  componentDidUpdate() {
+    window.scrollTo(0, 0)
+  }
 
   handleSearch(data) {
    this.props.searchNews(data)
