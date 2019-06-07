@@ -36,11 +36,12 @@ class News extends Component {
  
   render(){
     let topic = this.props.news.topic.topic
+    let total = this.props.news.total
    return (
      <div className="row">
        <div className="col s12">
           <SearchBar handleSearchData={this.handleSearch.bind(this)} />
-          <h4>{!topic ? '' : 'Results for ' +'"' + topic + '"'}</h4>
+          <h4>{!topic ? '' : total + ' results for ' +'"' + topic + '"'}</h4>
           <NewsList 
             articles={this.props.news.articles}
             onArticleSelect={selectedArticle => this.setState({selectedArticle})}
