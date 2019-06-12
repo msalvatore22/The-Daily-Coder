@@ -50,7 +50,6 @@ class Modal extends Component {
               </a>
               <img className="article-img" src={selectedArticle.urlToImage} alt="article" />
               <h4>{selectedArticle.title}</h4>
-              <p>{selectedArticle.title}</p>
               <p>{selectedArticle.author}</p>
               <p>{selectedArticle.description}</p>
             </div>
